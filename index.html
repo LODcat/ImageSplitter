@@ -1,45 +1,26 @@
-<input type="file" id="fileElem" multiple accept="image/*" style="display:none">
-<a href="#" id="fileSelect">Select some files</a>
-<div id="fileList">
-    <p>No files selected!</p>
-</div>
+<!DOCTYPE html>
+<html>
 
-<script>
-    const fileSelect = document.getElementById("fileSelect"),
-        fileElem = document.getElementById("fileElem"),
-        fileList = document.getElementById("fileList");
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+</head>
 
-    fileSelect.addEventListener("click", function (e) {
-        if (fileElem) {
-            fileElem.click();
-        }
-        e.preventDefault(); // prevent navigation to "#"
-    }, false);
+<body>
+    <input type="file" id="fileElem" accept="image/*" style="display:none">
 
-    fileElem.addEventListener("change", handleFiles, false);
+    <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+        <div id="imageCanvas">
+            <p>No files selected!</p>
+        </div>
+        <p>Drag one or more files to this Drop Zone ...</p>
+        <a href="#" id="fileSelect">Select some files</a>
+    </div>
+    <canvas id="cropped"></canvas>
+</body>
 
-    function handleFiles() {
-        if (!this.files.length) {
-            fileList.innerHTML = "<p>No files selected!</p>";
-        } else {
-            fileList.innerHTML = "";
-            const list = document.createElement("ul");
-            fileList.appendChild(list);
-            for (let i = 0; i < this.files.length; i++) {
-                const li = document.createElement("li");
-                list.appendChild(li);
+<script src="ThirdParty/caman.pack.js"></script>
+<script src="imageHandler.js"></script>
+<script src="main.js"></script>
 
-                const img = document.createElement("img");
-                img.src = URL.createObjectURL(this.files[i]);
-                img.height = 300;
-                img.onload = function () {
-                    URL.revokeObjectURL(this.src);
-                }
-                li.appendChild(img);
-                const info = document.createElement("span");
-                info.innerHTML = this.files[i].name + ": " + this.files[i].size + " bytes";
-                li.appendChild(info);
-            }
-        }
-    }
-</script>
+</html>
