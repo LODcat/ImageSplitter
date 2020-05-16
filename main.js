@@ -9,7 +9,7 @@ function handleFile(fileURL) {
   img.src = fileURL;
   console.log(img.src);
   img.height = 300;
-  cropImage(fileURL, 0, 0);
+  splitImage(fileURL, 2, 2);
 
   // Revoke URL
   //img.onload = function () {
