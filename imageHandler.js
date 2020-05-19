@@ -3,8 +3,8 @@ function splitImage(fileURL, xDivider, yDivider) {
     // Create cavans
     parentElem = document.getElementById('cropped');
     cropViewports = [];
-    for (var i = 0; i < xDivider; i++) {
-        for (var j = 0; j < yDivider; j++) {
+    for (var j = 0; j < yDivider; j++) {
+        for (var i = 0; i < xDivider; i++) {
             canvasId = 'cropped-' + i + '-' + j;
             canvasElem = document.createElement('canvas');
             canvasElem.setAttribute('id', canvasId);
@@ -24,8 +24,8 @@ function splitImage(fileURL, xDivider, yDivider) {
         Caman(element.canvasId, fileURL, function () {
             var xStep = this.imageWidth() / xDivider;
             var yStep = this.imageHeight() / yDivider;
-            var xOffset = xStep * (element.i+1);
-            var yOffset = yStep * (element.j+1);
+            var xOffset = xStep * (element.i);
+            var yOffset = yStep * (element.j);
             console.log(canvasId+": "+xOffset+"-"+yOffset);
             this.crop(xStep, yStep, xOffset, yOffset);
             //this.crop(150, 150, 300, 300);
