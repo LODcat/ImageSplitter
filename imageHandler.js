@@ -22,14 +22,14 @@ function splitImage(fileURL, xDivider, yDivider) {
     // crop images
     cropViewports.forEach(element => {
         Caman(element.canvasId, fileURL, function () {
-            const xStep = this.imageWidth() / xDivider;
-            const yStep = this.imageHeight() / yDivider;
-            const xOffset = xStep * element.i;
-            const yOffset = yStep * element.j;
-            //console.log(this.imageWidth());
+            var xStep = this.imageWidth() / xDivider;
+            var yStep = this.imageHeight() / yDivider;
+            var xOffset = xStep * (element.i+1);
+            var yOffset = yStep * (element.j+1);
+            console.log(canvasId+": "+xOffset+"-"+yOffset);
             this.crop(xStep, yStep, xOffset, yOffset);
-
-            this.brightness(10).render();
+            //this.crop(150, 150, 300, 300);
+            this.render();
         });
 
     });
