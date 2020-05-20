@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html>
-
+    <title>Image Splitter</title>
 <head>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <meta charset="UTF-8">
 </head>
-
 <body>
     <input type="file" id="fileElem" accept="image/*" style="display:none">
 
-    <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-        <div id="imageCanvas">
-            <p>No files selected!</p>
-            <p>Drag one or more files to this Drop Zone ...</p>
-            <a href="#" id="fileSelect">Select some files</a>
+    <div class="w3-display-middle" id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+        <p>Drag and drop image here to split ...</p>
+        <div id="image_display">
         </div>
     </div>
     <div id="cropped">
 
     </div>
 </body>
-
-<script src="ThirdParty/caman.pack.js"></script>
 <script src="imageHandler.js"></script>
 <script src="main.js"></script>
 

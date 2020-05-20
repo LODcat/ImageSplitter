@@ -1,15 +1,18 @@
 #drop_zone {
     border: 5px solid blue;
-    width:  300px;
-    height: 300px;
+    width:  400px;
+    height: 400px;
   }
 
-  #cropped
+  #image_display
   {
+      margin: auto;
       width: 100px;
       display: grid;
+      /*
       grid-template-columns: 105px 105px;
       grid-template-rows: 105px;
+      */
   }
 
   /*

@@ -1,20 +1,11 @@
-const fileSelect = document.getElementById("fileSelect"),
+const fileSelect = document.getElementById("drop_zone"),
   fileElem = document.getElementById("fileElem"),
   imageCanvas = document.getElementById("imageCanvas");
 
 function handleFile(fileURL) {
-  imageCanvas.innerHTML = "";
-  const img = document.createElement("img");
-  imageCanvas.appendChild(img);
-  img.src = fileURL;
-  console.log(img.src);
-  img.height = 300;
-  splitImage(fileURL, 2, 2);
-  // Revoke URL
-  //img.onload = function () {
-  //    URL.revokeObjectURL(this.src);
-  //}
+  splitImage(fileURL, 4, 0, 200, 1);
 }
+
 function dropHandler(ev) {
   console.log('File(s) dropped');
 
