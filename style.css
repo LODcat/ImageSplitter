@@ -6,14 +6,22 @@
 
   #cropped
   {
-      width: 400px;
+      width: 100px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 105px 105px;
+      grid-template-rows: 105px;
   }
 
+  /*
  #cropped > canvas {
+     /*
     background-color: rgba(255, 255, 255, 0.8);
+    /*
     text-align: center;
-    padding: 20px 0;
-    width: 200px;
+    /*
+    width: 100px;
+    /*
+    height: 100px;
+    /*
  } 
+ */

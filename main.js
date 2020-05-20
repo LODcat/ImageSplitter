@@ -10,7 +10,6 @@ function handleFile(fileURL) {
   console.log(img.src);
   img.height = 300;
   splitImage(fileURL, 2, 2);
-
   // Revoke URL
   //img.onload = function () {
   //    URL.revokeObjectURL(this.src);

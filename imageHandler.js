@@ -11,7 +11,7 @@ function splitImage(fileURL, xDivider, yDivider) {
             parentElem.appendChild(canvasElem);
             cropViewports.push(
                 {
-                    'canvasId': '#' + canvasId,
+                    'canvasId': canvasId,
                     'i': i,
                     'j': j
                 }
@@ -20,20 +20,21 @@ function splitImage(fileURL, xDivider, yDivider) {
     }
 
     // crop images
-    cropViewports.forEach(element => {
-        Caman(element.canvasId, fileURL, function () {
-            var xStep = this.imageWidth() / xDivider;
-            var yStep = this.imageHeight() / yDivider;
-            var xOffset = xStep * (element.i);
-            var yOffset = yStep * (element.j);
-            console.log(canvasId+": "+xOffset+"-"+yOffset);
-            this.crop(xStep, yStep, xOffset, yOffset);
-            //this.crop(150, 150, 300, 300);
-            this.render();
+    var image = new Image()
+    image.src = fileURL;
+    image.onload = function () {
+        cropViewports.forEach(element => {
+            canvas = document.getElementById(element.canvasId);
+            ctx = canvas.getContext('2d');
+            const xStep = this.width / xDivider;
+            const yStep = this.height / yDivider;
+            const xOffset = xStep * (element.i);
+            const yOffset = yStep * (element.j);
+            ctx.drawImage(image,
+                xOffset, yOffset,   // Start at 70/20 pixels from the left and the top of the image (crop),
+                xStep, yStep,   // "Get" a `50 * 50` (w * h) area from the source image (crop),
+                0, 0,     // Place the result at 0, 0 in the canvas,
+                100, 100); // With as width / height: 100 * 100 (scale) 
         });
-
-    });
-
-
-
+    };
 }
