@@ -3,7 +3,7 @@ const fileSelect = document.getElementById("drop_zone"),
   imageCanvas = document.getElementById("imageCanvas");
 
 function handleFile(fileURL) {
-  splitImage(fileURL, 4, 0, 200, 1);
+  splitImage(fileURL, 3, 0, 200, 1);
 }
 
 function dropHandler(ev) {
@@ -55,3 +55,14 @@ function handleFiles() {
     handleFile(URL.createObjectURL(this.files[0]));
   }
 }
+
+// Create glsl canvas
+var canvas = document.getElementById("glsl");
+var sandbox = new GlslCanvas(canvas);
+// Load only the Fragment Shader
+var string_frag_code = "void main(){gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);}";
+sandbox.load(string_frag_code);
+
+//// Load a Fragment and Vertex Shader
+//var string_vert_code = "attribute vec4 a_position; main(){\ggl_Position = a_position;\n}\n";
+//sandbox.load(string_frag_code, string_vert_code);

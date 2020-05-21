@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <title>Image Splitter</title>
+<title>Image Splitter</title>
+
 <head>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
     <meta charset="UTF-8">
 </head>
+
 <body>
+    <header style='width: 612px; margin: auto;'>
+        <canvas width='612px' height='50px' id='glsl'></canvas>
+    </header>
     <input type="file" id="fileElem" accept="image/*" style="display:none">
 
-    <div class="w3-display-middle" id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-        <p>Drag and drop image here to split ...</p>
+    <div id="drop_zone" ondrop="dropHandler(event);"
+        ondragover="dragOverHandler(event);">
+        <p id="drop_message">Drag and drop image here to split ...</p>
         <div id="image_display">
         </div>
     </div>
-    <div id="cropped">
-
-    </div>
 </body>
+<script type="text/javascript"
+    src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
 <script src="imageHandler.js"></script>
 <script src="main.js"></script>
 
