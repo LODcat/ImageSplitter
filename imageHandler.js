@@ -17,19 +17,17 @@ function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 200, gridPadding
         var rowStyle = "";
         var width = 0.0;
         var height = 0.0;
-        for(var i = 0; i < xDivider; i++)
-        {
-            columnStyle += (gridSize+gridPadding) + "px ";
+        for (var i = 0; i < xDivider; i++) {
+            columnStyle += (gridSize + gridPadding) + "px ";
             width += gridSize + gridPadding;
         }
-        for(var i = 0; i < yDivider; i++)
-        {
-            rowStyle += (gridSize+gridPadding) + "px ";
+        for (var i = 0; i < yDivider; i++) {
+            rowStyle += (gridSize + gridPadding) + "px ";
             height += gridSize + gridPadding;
         }
         // resize dropzone
-        dropZone.style.width = width+8+"px";
-        dropZone.style.height = height+8+"px";
+        dropZone.style.width = width + 8 + "px";
+        dropZone.style.height = height + 8 + "px";
         parentElem.style.gridTemplateColumns = columnStyle;
         parentElem.style.gridTemplateRows = rowStyle;
 
@@ -44,15 +42,15 @@ function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 200, gridPadding
 
                 const xStep = this.width / xDivider;
                 const yStep = this.height / yDivider;
-                ctx.canvas.width= gridSize;
+                ctx.canvas.width = gridSize;
                 ctx.canvas.height = gridSize;
                 const xOffset = xStep * i;
                 const yOffset = yStep * j;
                 ctx.drawImage(image,
-                    xOffset, yOffset,   // Start at 70/20 pixels from the left and the top of the image (crop),
-                    xStep, yStep,   // "Get" a `50 * 50` (w * h) area from the source image (crop),
-                    0, 0,     // Place the result at 0, 0 in the canvas,
-                    gridSize, gridSize); // With as width / height: 100 * 100 (scale) 
+                    xOffset, yOffset,
+                    xStep, yStep,
+                    0, 0,
+                    gridSize, gridSize);
                 outputCanvases.push(canvas);
             }
         }
@@ -63,20 +61,24 @@ function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 200, gridPadding
 
         outputCanvases.forEach((canvas, idx) => {
             var imgData = canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "");
-            img.file(idx.toString().padStart(3, '0') + ".png", imgData, {base64: true});
+            img.file(idx.toString().padStart(3, '0') + ".png", imgData, { base64: true });
         });
 
-        // Export to download
-        zip.generateAsync({type:"blob"})
-            .then(function(content) {
-                // see FileSaver.js
-                saveAs(content, "splittedImages.zip");
+        var button = document.createElement("button");
+        button.innerHTML = "Download";
+        button.addEventListener("click", function () {
+            // Export to download
+            zip.generateAsync({ type: "blob" })
+                .then(function (content) {
+                    // see FileSaver.js
+                    saveAs(content, "splittedImages.zip");
+                });
         });
+        document.getElementById("dl_button").appendChild(button);
     };
 }
 
-function computeYDivider(xDivider, imgWidth, imageHeight)
-{
+function computeYDivider(xDivider, imgWidth, imageHeight) {
     step = imgWidth / xDivider;
     return Math.ceil(imageHeight / step);
 
