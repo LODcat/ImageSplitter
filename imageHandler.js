@@ -1,5 +1,6 @@
 // This file contains a common interface to handle images
-function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 100, gridPadding = 5) {
+// It returns the canvases that contains these tiles
+function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 200, gridPadding = 5) {
     // crop images
     dropZone = document.getElementById("drop_zone");
     parentElem = document.getElementById('image_display');
@@ -32,6 +33,7 @@ function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 100, gridPadding
         parentElem.style.gridTemplateColumns = columnStyle;
         parentElem.style.gridTemplateRows = rowStyle;
 
+        var outputCanvases = [];
         for (var j = 0; j < yDivider; j++) {
             for (var i = 0; i < xDivider; i++) {
                 canvasId = 'cropped-' + i + '-' + j;
@@ -51,8 +53,25 @@ function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 100, gridPadding
                     xStep, yStep,   // "Get" a `50 * 50` (w * h) area from the source image (crop),
                     0, 0,     // Place the result at 0, 0 in the canvas,
                     gridSize, gridSize); // With as width / height: 100 * 100 (scale) 
+                outputCanvases.push(canvas);
             }
         }
+
+        // Add image to zip file
+        var zip = new JSZip();
+        var img = zip.folder("images");
+
+        outputCanvases.forEach((canvas, idx) => {
+            var imgData = canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "");
+            img.file(idx.toString().padStart(3, '0') + ".png", imgData, {base64: true});
+        });
+
+        // Export to download
+        zip.generateAsync({type:"blob"})
+            .then(function(content) {
+                // see FileSaver.js
+                saveAs(content, "splittedImages.zip");
+        });
     };
 }
 

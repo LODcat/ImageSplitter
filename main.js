@@ -3,7 +3,7 @@ const fileSelect = document.getElementById("drop_zone"),
   imageCanvas = document.getElementById("imageCanvas");
 
 function handleFile(fileURL) {
-  splitImage(fileURL, 3, 0, 200, 1);
+  splitImage(fileURL, 3, 0, 600, 1);
 }
 
 function dropHandler(ev) {

@@ -4,8 +4,6 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
-
-
     <meta charset="UTF-8">
 </head>
 
@@ -14,6 +12,7 @@
         <canvas width='612px' height='50px' id='glsl'></canvas>
     </header>
     <input type="file" id="fileElem" accept="image/*" style="display:none">
+    <div id="dl_button"></div>
 
     <div id="drop_zone" ondrop="dropHandler(event);"
         ondragover="dragOverHandler(event);">
@@ -24,6 +23,10 @@
 </body>
 <script type="text/javascript"
     src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
+<script type="text/javascript"
+    src="thirdParty/jszip.min.js"></script>
+<script type="text/javascript"
+    src="thirdParty/FileSaver.min.js"></script>
 <script src="imageHandler.js"></script>
 <script src="main.js"></script>
 
