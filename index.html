@@ -8,18 +8,28 @@
 </head>
 
 <body>
+  <div class="header">
+    <div class="title">
+      <h1>Image Splitter</h1>
+    </div>
+  </div>
+
     <header style='width: 612px; margin: auto;'>
         <canvas width='612px' height='50px' id='glsl'></canvas>
     </header>
     <input type="file" id="fileElem" accept="image/*" style="display:none">
     <div id="dl_button"></div>
 
+<div id="drop_zone_container">
     <div id="drop_zone" ondrop="dropHandler(event);"
         ondragover="dragOverHandler(event);">
         <p id="drop_message">Drag and drop image here to split ...</p>
         <div id="image_display">
         </div>
     </div>
+  </div>
+  <div class="footer">
+  </div>
 </body>
 <script type="text/javascript"
     src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>

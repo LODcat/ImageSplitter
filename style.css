@@ -1,8 +1,34 @@
+body{
+  font-family: "Roboto", "Arial" , sans-serif ;
+}
+.header{
+  margin: 30px auto 15px auto;
+  text-align: center;
+}
+.title h1{
+  margin: auto;
+  width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;    /* Firefox/Gecko */
+  width: -webkit-max-content;
+  width: max-content;
+  background: -webkit-linear-gradient(left, #FEDA77, #F58529, #DD2A7B, #8134AF, #515BD4 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#drop_zone_container{
+  width:  610px;
+  height: 610px;
+  position: relative;
+  background: linear-gradient(to right, #FEDA77, #F58529, #DD2A7B, #8134AF, #515BD4);
+  margin: auto;
+  padding: 3px;
+}
 #drop_zone {
-    margin: auto;
-    border: 5px solid blue;
-    width:  612px;
-    height: 615px;
+    background: #fff;
+    width:  600px;
+    height: 600px;
+    padding: 5px;
   }
 
   #image_display
