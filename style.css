@@ -18,7 +18,7 @@ body{
 
 #drop_zone_container{
   width:  610px;
-  height: 610px;
+  height: 410px;
   position: relative;
   background: linear-gradient(to right, #FEDA77, #F58529, #DD2A7B, #8134AF, #515BD4);
   margin: auto;
@@ -27,8 +27,24 @@ body{
 #drop_zone {
     background: #fff;
     width:  600px;
-    height: 600px;
+    height: 400px;
     padding: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  #drop_message{
+    margin: 150px auto 0 auto;
+    border-radius: 5px;
+    color: #000;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  #drop_message:hover{
+    background: #515BD4;
+    color:#fff;
   }
 
   #image_display

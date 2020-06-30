@@ -23,7 +23,8 @@
 <div id="drop_zone_container">
     <div id="drop_zone" ondrop="dropHandler(event);"
         ondragover="dragOverHandler(event);">
-        <p id="drop_message">Drag and drop image here to split ...</p>
+        <button id="drop_message"><i class="far fa-file-image"></i>  Choose image</button>
+        <p>or drop image here</p>
         <div id="image_display">
         </div>
     </div>
@@ -33,6 +34,7 @@
 </body>
 <script type="text/javascript"
     src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
+<script src="https://kit.fontawesome.com/5243d33cc0.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="thirdParty/jszip.min.js"></script>
 <script type="text/javascript" src="thirdParty/FileSaver.min.js"></script>
 <script src="imageHandler.js"></script>
