@@ -21,15 +21,20 @@
     <input type="file" id="fileElem" accept="image/*" style="display:none">
     <div id="dl_button"></div>
 
-<div id="drop_zone_container">
+<div class="drop_zone_container">
     <div id="drop_zone" ondrop="dropHandler(event);"
         ondragover="dragOverHandler(event);">
         <button id="drop_message"><i class="far fa-file-image"></i>  Choose image</button>
         <p>or drop image here</p>
-        <div id="image_display">
-        </div>
     </div>
   </div>
+
+  <div class="splitted drop_zone_container">
+      <div id="drop_zone">
+          <div id="image_display">
+          </div>
+      </div>
+    </div>
   <div class="footer">
   </div>
 </body>
@@ -38,6 +43,7 @@
 <script src="https://kit.fontawesome.com/5243d33cc0.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="thirdParty/jszip.min.js"></script>
 <script type="text/javascript" src="thirdParty/FileSaver.min.js"></script>
+<script type="text/javascript" src="thirdParty/jQuery.js"></script>
 <script src="imageHandler.js"></script>
 <script src="main.js"></script>
 

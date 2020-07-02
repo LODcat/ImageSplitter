@@ -3,7 +3,12 @@ const fileSelect = document.getElementById("drop_zone"),
   imageCanvas = document.getElementById("imageCanvas");
 
 function handleFile(fileURL) {
-  splitImage(fileURL, 3, 0, 600, 1);
+  let gridSize = ($('.drop_zone_container').width() - 3)/3;
+
+  $('.drop_zone_container').hide();
+  $('.splitted').show();
+
+  splitImage(fileURL, 3, 0, gridSize, 1);
 }
 
 function dropHandler(ev) {
