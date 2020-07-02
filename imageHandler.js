@@ -10,7 +10,7 @@ function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 200, gridPadding
         // Remove message element
         messageElem = document.getElementById("drop_message")
         messageElem.remove();
-        // Compute yDivider 
+        // Compute yDivider
         yDivider = yDivider == 0 ? computeYDivider(xDivider, image.width, image.height) : yDivider;
         // Set grid attribute on parent
         var columnStyle = "";
@@ -64,8 +64,9 @@ function splitImage(fileURL, xDivider, yDivider = 0, gridSize = 200, gridPadding
             img.file(idx.toString().padStart(3, '0') + ".png", imgData, { base64: true });
         });
 
-        var button = document.createElement("button");
-        button.innerHTML = "Download";
+        var button = document.createElement("button"),
+        icon = "<i class='fas fa-download'></i>";
+        button.innerHTML = icon+" Download";
         button.addEventListener("click", function () {
             // Export to download
             zip.generateAsync({ type: "blob" })
